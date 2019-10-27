@@ -1,0 +1,8 @@
+- hosts: web
+  become: true
+  roles:
+    - web
+  tasks:
+    - name: debug task
+      debug:
+        msg: "{{ dummyvar }}"

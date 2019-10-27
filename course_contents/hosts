@@ -1,0 +1,12 @@
+[control]
+controller ansible_connection=local
+
+[web]
+web1 ansible_host=192.168.60.6
+web2 ansible_host=192.168.60.7
+
+[lb]
+lb1 ansible_host=192.168.60.5
+
+[db]
+db1 ansible_host=192.168.60.8
