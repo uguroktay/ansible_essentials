@@ -1,8 +1,0 @@
-- hosts: controller
-  vars:
-    mylist: ['Peach','Plum','Horse','Crocodile','Butterfly']
-  tasks:
-   - name: Template Loop example
-     template:
-       src: template2.j2
-       dest: /tmp/output.txt
