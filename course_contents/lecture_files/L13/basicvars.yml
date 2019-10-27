@@ -1,7 +1,0 @@
-  - hosts: all
-    vars:
-      hello: world
-    tasks:
-    - name: Ansible Basic Variable Example
-      debug:
-        msg: "{{ hello }}"
