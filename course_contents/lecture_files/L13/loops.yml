@@ -1,9 +1,0 @@
-- hosts: web1
-  vars:
-    fruits: [strawberry, pomegrenade, cherry, plum ,apple ,orange, Watermelon]
-  tasks:
-  - name: Ansible looping trough list example
-    debug: 
-      msg: "{{ item }}"
-    loop:
-      - "{{ fruits }}"
