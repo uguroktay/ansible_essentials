@@ -1,6 +1,0 @@
-  - hosts: all
-    vars:
-      myint: 15
-    tasks:
-    - debug:
-        msg: "Ansible arithmetic operations using variables '{{ myint * 1.5 }}'"
