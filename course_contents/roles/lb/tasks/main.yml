@@ -1,0 +1,26 @@
+---
+# tasks file for lb
+    - name: install haproxy
+      yum:
+        name: haproxy
+        state: present
+        update_cache: true
+    - name: start & enable haproxy
+      service:
+        name: haproxy
+        state: started
+        enabled: yes
+    - name: template out haproxy config
+      template:
+        src: haproxy.cfg.j2
+        dest: /etc/haproxy/haproxy.cfg
+        mode: 0640
+        owner: root
+        group: root
+      notify: restart haproxy
+    - name: allow SSH traffic
+      firewalld:
+        port: 80/tcp
+        permanent: true
+        state: enabled
+        immediate: true

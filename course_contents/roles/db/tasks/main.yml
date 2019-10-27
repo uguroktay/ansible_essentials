@@ -1,0 +1,45 @@
+---
+# tasks file for db
+    - name: install packages
+      yum:
+        name:
+          - mariadb-server
+          - MySQL-python
+        update_cache: true
+        state: present
+    - name: start mysql
+      service:
+        name: mariadb
+        state: started
+        enabled: true
+    - name: create a new database
+      mysql_db:
+        name: "{{ db_name }}"
+        state: present
+        collation: utf8_general_ci
+    - name: create a database user
+      mysql_user:
+        name: "{{ db_user }}"
+        password: "{{ db_user_pass }}"
+        priv: "{{ db_user_priv }}"
+        host: "{{ db_allowed_hosts }}"
+        state: present
+    - name: allow localhost
+      mysql_user:
+        name: "{{ db_user }}"
+        password: "{{ db_user_pass }}"
+        priv: "{{ db_user_priv }}"
+        host: localhost
+        state: present
+    - name: copy sample data
+      copy:
+        src: dump.sql
+        dest: /tmp/dump.sql
+    - name: insert sample data
+      shell: cat /tmp/dump.sql | mysql -u demo -pdemo demo
+    - name: allow SSH traffic
+      firewalld:
+        port: 3306/tcp
+        permanent: true
+        state: enabled
+        immediate: true

@@ -1,0 +1,7 @@
+---
+# defaults file for db
+db_name: demo
+db_user: demo
+db_user_pass: demo
+db_user_priv: '*.*:ALL'
+db_allowed_hosts: '%'

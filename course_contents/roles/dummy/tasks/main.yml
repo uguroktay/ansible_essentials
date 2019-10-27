@@ -1,0 +1,4 @@
+---
+- name: debug task in dummy role
+  debug:
+    msg: "{{ dummyvar }}"

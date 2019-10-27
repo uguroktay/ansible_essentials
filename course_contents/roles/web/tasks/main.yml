@@ -1,0 +1,78 @@
+---
+# tasks file for web
+    - name: install apache
+      yum:
+        name: httpd,git
+        state: present
+        update_cache: true
+      tags:
+        - base
+    - name: install packages
+      yum:
+        name: 
+          - php
+          - php-mysql
+        state: present
+        update_cache: true
+      notify: restart apache
+      tags:
+        - base
+    - name: start apache service
+      service: 
+        name: httpd
+        state: started
+        enabled: yes
+      tags:
+        - base
+    - name: deploy index.php
+      git:
+        repo: "{{ repository }}"
+        dest: "{{ document_root_path }}"
+      tags:
+        - content
+    - name: vhost config block
+      block:
+      - name: Copy vhost config
+        copy:
+          src: ansible_site.conf
+          dest: "{{ vhost_config_file }}"
+          owner: root
+          group: root
+          mode: 0644
+        notify: restart apache
+      - name: check configuration validity
+        command: httpd -t
+      rescue:
+      - name: remove bad virtual host configuration
+        file:
+          path: "{{ vhost_config_file }}"
+          state: absent
+      - name: Rolling back - ending playbook
+        fail:
+          msg: "Configuration file is not valid. Please check that before re-running the playbook"
+      tags:
+        - vhost
+    - name: Configure httpd.conf
+      lineinfile:
+        path: "{{ apache_config_file }}"
+        regexp: "^IncludeOptional"
+        line: "IncludeOptional conf.d/*.conf"
+      notify: restart apache
+      tags:
+        - vhost
+    - name: install hello world script with db
+      copy:
+        src: db.php
+        dest: "{{ document_root_path }}db.php"
+        mode: 0775
+      tags:
+        - content
+    - name: allow SSH traffic
+      firewalld:
+        port: 80/tcp
+        permanent: true
+        state: enabled
+        immediate: true
+      tags:
+        - security
+        - firewall
