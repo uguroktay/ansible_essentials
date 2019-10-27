@@ -1,0 +1,8 @@
+- hosts: controller
+  vars:
+    logfile: /var/log/mylog.txt
+  tasks:
+  - name: Template example
+    template:
+      src: template4.j2
+      dest: /tmp/output.txt

@@ -1,0 +1,9 @@
+- hosts: web1
+  vars:
+    USA: { Capital: 'Washington DC', Continent: 'NA',President: 'Donald Trump' }
+  tasks:
+  - name: Ansible Dictionary Example
+    debug:
+      msg: "Key is {{ item.key }} value is {{ item.value}}"
+    loop: "{{ USA|dict2items }}"
+
