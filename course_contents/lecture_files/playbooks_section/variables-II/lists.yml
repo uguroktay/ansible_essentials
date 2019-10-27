@@ -1,0 +1,7 @@
+- hosts: all
+  vars:
+    country: [Korea, China, Russia, India, Tibet, Vietnam]
+  tasks:
+  - name: Ansible List variable Example
+    debug:
+      msg: "{{ country[3] }}"

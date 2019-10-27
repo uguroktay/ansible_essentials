@@ -1,0 +1,10 @@
+- hosts: controller
+  vars:
+    myvariable: 6.27
+  tasks:
+  - name: show myvariable
+    debug:
+      msg:  "{{ myvariable }}"
+  - name: Ansible int filter example
+    debug:
+      msg:  "{{ myvariable | int }}"

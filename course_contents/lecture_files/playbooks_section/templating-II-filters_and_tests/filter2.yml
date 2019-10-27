@@ -1,0 +1,7 @@
+- hosts: web1
+  vars:
+    mystring: smile!
+  tasks:
+  - name: Ansible int filter example
+    debug:
+      msg:  "{{ mystring|capitalize|reverse }}"

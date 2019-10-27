@@ -1,0 +1,4 @@
+Example of looping with a list inside a template.
+host.list={% for node in groups['web'] %}
+  {{ node }}
+{% endfor %}

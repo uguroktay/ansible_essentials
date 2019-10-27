@@ -1,0 +1,10 @@
+- hosts: controller
+  become: yes
+  vars:
+    var1: 'Hello Africa'
+    var2: 'Hello Asia'
+  tasks:
+  - name: Ansible Template Example
+    template:
+      src: template1.j2
+      dest: /tmp/output.txt

@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    variable1: 'set-via-vars-in-playbook'
+  tasks:
+  - name: task 1
+    debug:
+      msg: "{{ variable1 }}"
+  # - name: task 2 
+  #   set_fact:
+  #     variable1: 'set-via-set-fact'
+  - name: task 3
+    debug:
+      msg: "{{ variable1 }}"
+    vars:
+      variable1: 'set-via-task'

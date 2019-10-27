@@ -1,0 +1,15 @@
+#inclusion.yaml 
+- hosts: localhost
+  gather_facts: false
+  tasks:
+  - set_fact:
+      mode: 0
+  - name: include task
+    include_tasks: file1.yml
+    when: "mode==0"
+  - debug:
+      msg: I'm a native task
+  - set_fact:
+      mode: 0
+  - import_tasks: file2.yml
+    when: "mode==0"

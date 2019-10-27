@@ -1,0 +1,7 @@
+- hosts: web1
+  vars:
+    my_message: message from the playbook
+  tasks:
+  - name: print out the message
+    debug:
+      msg: "{{ my_message }}"

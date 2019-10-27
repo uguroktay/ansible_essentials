@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+  - debug:
+      msg: "{{ variable2 }}"
+  - set_fact:
+      variable2: 'set-via-set-fact'
+  - debug:
+      msg: "{{ variable2 }}"

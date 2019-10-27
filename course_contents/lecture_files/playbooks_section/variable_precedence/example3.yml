@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    variable3: 'set_via_vars_definition'
+  tasks:
+  - name: task 1 (debug 1)
+    debug: 
+      msg: "{{ variable3 }}"
+  - name: task 2 (include vars)
+    include_vars: 'first_variable_file.yml'
+  - name: task 3 (debug 2)
+    debug: 
+      msg: "{{ variable3 }}"
+  - name: task 4 (include vars)
+    include_vars: 'second_variable_file.yml'
+  - name: task 5 (debug 3)
+    debug:
+      msg: "{{ variable3 }}"

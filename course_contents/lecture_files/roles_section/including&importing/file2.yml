@@ -1,0 +1,5 @@
+#file2.yml
+- name: set_fact(imported file))
+  set_fact: mode="1"
+- debug:
+    msg: imported file

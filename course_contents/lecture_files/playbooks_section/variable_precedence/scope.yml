@@ -1,0 +1,12 @@
+- hosts: web1
+  vars:
+    dummy: value
+  tasks:
+    - name:
+      debug:
+        msg: "{{ dummy }}"
+- hosts: web1
+  tasks:
+    - name:
+      debug:
+        msg: "{{ dummy }}"

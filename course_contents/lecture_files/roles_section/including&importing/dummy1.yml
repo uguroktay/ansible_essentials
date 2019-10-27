@@ -1,0 +1,7 @@
+- name: demo import_playbook
+  hosts: web
+  tasks:
+    - debug:
+        msg: this is play 1
+- name: include a play after another play
+  import_playbook: dummy2.yml

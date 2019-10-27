@@ -1,0 +1,5 @@
+# file1.yml
+- name: set_fact(included file))
+  set_fact: mode="1"
+- debug:
+    msg: included file

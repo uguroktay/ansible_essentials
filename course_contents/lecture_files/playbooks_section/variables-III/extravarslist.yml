@@ -1,0 +1,11 @@
+- hosts: web1
+  become: yes
+  vars:
+    packages:
+    - httpd
+    - php
+  tasks:
+   - name: non-optimal yum, slower and may cause issues with interdependencies
+     yum:
+       name: "{{  packages }}"
+       state: absent

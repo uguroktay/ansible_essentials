@@ -1,0 +1,10 @@
+- hosts: web
+  become: true
+  tasks:
+    - name: set fact
+      set_fact:
+        first_fact: 'this is the first fact'
+        second_fact: other
+    - name: debug
+      debug:
+        msg: "{{ hostvars.web2.first_fact }}"

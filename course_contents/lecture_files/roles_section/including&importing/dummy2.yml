@@ -1,0 +1,12 @@
+- name: play 1 from imported playbook
+  hosts: web
+  tasks:
+    - name: debug task
+      debug:
+        msg: this is the first play in dummy2
+- name: play 2 from imported playbook
+  hosts: web
+  tasks:
+    - name: debug task
+      debug:
+        msg: this is the second play in dummy2
