@@ -14,7 +14,7 @@
 
 <p> App backend <?=gethostname()?> </p>
 
-<img src="http://theoldreader.com/kittens/600/400/js" />
+<img src="http://fillmurray.com/408/287" />
 
 </body>
 
