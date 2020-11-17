@@ -10,7 +10,7 @@
 
 <body>
 
-<h1>php from another site !</h1>
+<h1>php from another site!</h1>
 
 <p> App backend <?=gethostname()?> </p>
 
