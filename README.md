@@ -4,4 +4,4 @@ All content (YAML files, playbooks, templates etc.) used troughout the Ansible E
 
 If you haven't enrolled yet, you can use this coupon code for a discount:
 
-https://www.udemy.com/course/ansible-essentials/?couponCode=APRIL_2025
+https://www.udemy.com/course/ansible-essentials/?couponCode=SUMMER_2025
